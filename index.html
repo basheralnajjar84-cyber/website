@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة المختار للسيارات</title>
+    <title>روابطنا الاجتماعية | شركة السيارات</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // إعداد Tailwind ليتفاعل تلقائياً مع إعدادات الجهاز
+        tailwind.config = {
+            darkMode: 'media',
+        }
+    </script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
     <style>
-        body { margin: 0; overflow: hidden; background-color: #050505; }
+        body { margin: 0; overflow: hidden; }
         
-        /* حاوية الخلفية 3D */
         #canvas-container { 
             position: fixed; 
             top: 0; 
@@ -24,46 +29,55 @@
             z-index: -1; 
         }
 
-        /* التصميم الزجاجي للبطاقة */
+        /* التصميم الزجاجي للبطاقة (الوضع النهاري - الافتراضي) */
         .glass-card {
-            background: rgba(15, 15, 15, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* التصميم الزجاجي للبطاقة (الوضع الليلي) */
+        @media (prefers-color-scheme: dark) {
+            .glass-card {
+                background: rgba(15, 15, 15, 0.65);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            }
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen font-sans text-gray-100">
+<body class="flex items-center justify-center min-h-screen font-sans text-gray-800 dark:text-gray-100 transition-colors duration-500">
 
     <div id="canvas-container"></div>
 
     <div class="glass-card rounded-2xl p-8 w-11/12 max-w-sm text-center z-10 transition-transform duration-500 hover:scale-[1.02]">
         
         <div class="mb-6">
-            <img src="logo.svg" alt="شعار الشركة" class="w-28 h-28 mx-auto rounded-full border-2 border-gray-500 object-cover bg-gray-800 shadow-lg">
+            <img src="logo.svg" alt="شعار الشركة" class="w-28 h-28 mx-auto rounded-full border-2 border-gray-300 dark:border-gray-500 object-cover bg-white dark:bg-gray-800 shadow-lg transition-colors duration-500">
         </div>
 
-        <h1 class="text-2xl font-bold mb-8 text-white tracking-wide">تواصل معنا عبر صفحاتنا</h1>
+        <h1 class="text-2xl font-bold mb-8 tracking-wide">تابعنا على السوشيال ميديا</h1>
 
         <div class="space-y-4">
 
-            <a href="https://www.facebook.com/share/1BuA8oiw39/" target="_blank" class="relative flex items-center bg-gray-900/50 hover:bg-[#1877F2] border border-[#1877F2]/50 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group">
+            <a href="https://www.facebook.com/share/1BuA8oiw39/" target="_blank" class="relative flex items-center bg-white/60 dark:bg-gray-900/50 hover:bg-[#1877F2] dark:hover:bg-[#1877F2] border border-gray-200 dark:border-[#1877F2]/50 hover:text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group shadow-sm">
                 <i class="fa-brands fa-facebook-f text-[#1877F2] group-hover:text-white text-2xl absolute right-6 transition-colors"></i>
                 <span class="w-full text-center">فيسبوك</span>
             </a>
 
-            <a href="https://www.instagram.com/reel/DSqE4GHChDO/" target="_blank" class="relative flex items-center bg-gray-900/50 hover:bg-[#E1306C] border border-[#E1306C]/50 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group">
+            <a href="https://www.instagram.com/reel/DSqE4GHChDO/" target="_blank" class="relative flex items-center bg-white/60 dark:bg-gray-900/50 hover:bg-[#E1306C] dark:hover:bg-[#E1306C] border border-gray-200 dark:border-[#E1306C]/50 hover:text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group shadow-sm">
                 <i class="fa-brands fa-instagram text-[#E1306C] group-hover:text-white text-2xl absolute right-6 transition-colors"></i>
                 <span class="w-full text-center">إنستغرام</span>
             </a>
 
-            <a href="https://t.me/almukhtar_56" target="_blank" class="relative flex items-center bg-gray-900/50 hover:bg-[#229ED9] border border-[#229ED9]/50 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group">
+            <a href="https://t.me/almukhtar_56" target="_blank" class="relative flex items-center bg-white/60 dark:bg-gray-900/50 hover:bg-[#229ED9] dark:hover:bg-[#229ED9] border border-gray-200 dark:border-[#229ED9]/50 hover:text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group shadow-sm">
                 <i class="fa-brands fa-telegram text-[#229ED9] group-hover:text-white text-2xl absolute right-6 transition-colors"></i>
                 <span class="w-full text-center">تيليجرام</span>
             </a>
 
-            <a href="https://wa.me/963958598770" target="_blank" class="relative flex items-center bg-gray-900/50 hover:bg-[#25D366] border border-[#25D366]/50 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group">
+            <a href="https://wa.me/963958598770" target="_blank" class="relative flex items-center bg-white/60 dark:bg-gray-900/50 hover:bg-[#25D366] dark:hover:bg-[#25D366] border border-gray-200 dark:border-[#25D366]/50 hover:text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 group shadow-sm">
                 <i class="fa-brands fa-whatsapp text-[#25D366] group-hover:text-white text-2xl absolute right-6 transition-colors"></i>
                 <span class="w-full text-center">واتساب</span>
             </a>
@@ -73,7 +87,6 @@
 
     <script>
         const scene = new THREE.Scene();
-        // ضباب لإعطاء عمق للمشهد
         scene.fog = new THREE.FogExp2(0x000000, 0.02);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -84,51 +97,74 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // إنشاء شبكة سفلية (طريق نيون)
+        // إنشاء شبكة سفلية
         const gridHelper = new THREE.GridHelper(200, 100, 0x00d2ff, 0x002244);
         scene.add(gridHelper);
 
-        // إنشاء جزيئات متطايرة (تأثير سرعة)
+        // إنشاء جزيئات متطايرة
         const geometry = new THREE.BufferGeometry();
         const vertices = [];
-        for ( let i = 0; i < 600; i ++ ) {
+        for ( let i = 0; i < 400; i ++ ) { // تقليل عدد الجزيئات لتبدو أهدأ
             vertices.push(
-                THREE.MathUtils.randFloatSpread( 200 ), // X
-                THREE.MathUtils.randFloatSpread( 40 ) + 20, // Y (فوق الشبكة)
-                THREE.MathUtils.randFloatSpread( 200 )  // Z
+                THREE.MathUtils.randFloatSpread( 200 ),
+                THREE.MathUtils.randFloatSpread( 40 ) + 20,
+                THREE.MathUtils.randFloatSpread( 200 )
             );
         }
         geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
-        const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.4 });
+        const material = new THREE.PointsMaterial({ color: 0xffffff, size: 0.3 });
         const particles = new THREE.Points(geometry, material);
         scene.add(particles);
+
+        // --- توافق الخلفية 3D مع الوضع الليلي والنهاري ---
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        function updateThreeJSTheme(e) {
+            if (e.matches) {
+                // وضع ليلي
+                scene.fog.color.setHex(0x050505);
+                renderer.setClearColor(0x050505, 1);
+                gridHelper.material.color.setHex(0x00d2ff); // نيون أزرق
+                material.color.setHex(0xffffff);
+            } else {
+                // وضع نهاري
+                scene.fog.color.setHex(0xf3f4f6); // لون رمادي فاتح يتناسب مع Tailwind
+                renderer.setClearColor(0xf3f4f6, 1);
+                gridHelper.material.color.setHex(0x3b82f6); // أزرق هادئ
+                material.color.setHex(0x6b7280); // جزيئات رمادية داكنة لتظهر في النهار
+            }
+        }
+        
+        // تطبيق الثيم الأولي ومراقبة التغييرات
+        updateThreeJSTheme(darkModeMediaQuery);
+        darkModeMediaQuery.addEventListener('change', updateThreeJSTheme);
+
 
         // دالة التحريك المستمر
         function animate() {
             requestAnimationFrame(animate);
 
-            // تحريك الشبكة باتجاه الكاميرا (إحساس بالقيادة)
-            gridHelper.position.z += 0.4;
+            // إبطاء سرعة الشبكة بشكل كبير (من 0.4 إلى 0.05)
+            gridHelper.position.z += 0.05;
             if (gridHelper.position.z > 2) { 
                 gridHelper.position.z = 0;
             }
 
-            // تحريك الجزيئات لإعطاء تأثير هواء / سرعة
+            // إبطاء سرعة الجزيئات (من 0.6 إلى 0.1)
             const positions = particles.geometry.attributes.position.array;
             for(let i=2; i<positions.length; i+=3) {
-                positions[i] += 0.6; // سرعة تقدم الجزيئات
-                if(positions[i] > 50) positions[i] = -150; // إعادة تعيين الجزيء عند تخطيه الكاميرا
+                positions[i] += 0.1; 
+                if(positions[i] > 50) positions[i] = -150; 
             }
             particles.geometry.attributes.position.needsUpdate = true;
 
-            // تحريك طفيف للكاميرا مع الماوس (اختياري لزيادة التفاعل)
-            camera.position.x += (mouseX - camera.position.x) * 0.05;
-            camera.position.y += (-mouseY - camera.position.y + 5) * 0.05;
+            // تحريك طفيف جداً للكاميرا مع الماوس
+            camera.position.x += (mouseX - camera.position.x) * 0.02;
+            camera.position.y += (-mouseY - camera.position.y + 5) * 0.02;
 
             renderer.render(scene, camera);
         }
 
-        // تفاعل الماوس
         let mouseX = 0;
         let mouseY = 0;
         document.addEventListener('mousemove', (event) => {
@@ -138,7 +174,6 @@
 
         animate();
 
-        // تحديث الأبعاد عند تغيير حجم الشاشة
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
